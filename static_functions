@@ -1,1 +1,195 @@
+Example 1
 
+using System;
+ 
+// Creating static class
+// Using static keyword
+static class Tutorial {
+ 
+    // Static data members of Tutorial
+    public static string Topic = "Static class";
+}
+ 
+// Driver Class
+public class GFG {
+ 
+    // Main Method
+    static public void Main()
+    {
+ 
+        // Accessing the static data members of Tutorial
+        Console.WriteLine("Topic name is : {0} ", Tutorial.Topic);
+    }
+}
+
+
+Example 2
+
+using System;
+ 
+class Vehicle {
+ 
+    // Creating static variable
+    // Using static keyword
+    public static string Model_color = "Black";
+}
+ 
+// Driver Class
+public class GFG {
+ 
+    // Main Method
+    static public void Main()
+    {
+ 
+        // Accessing the static variable
+        // using its class name
+        Console.WriteLine("Color of XY model is  : {0} ",
+                                    Vehicle.Model_color);
+    }
+}
+
+
+Example 3
+
+using System;
+ 
+class Nparks {
+ 
+    static public int t = 104;
+ 
+    // Creating static method
+    // Using static keyword
+    public static void total()
+    {
+        Console.WriteLine("Total number of national parks"+
+                           " present in India is :{0}", t);
+    }
+}
+ 
+// Driver Class
+public class GFG {
+ 
+    // Main Method
+    static public void Main()
+    {
+ 
+        // Accessing the static method
+        // using its class name
+        Nparks.total();
+    }
+}
+
+
+Example 4
+
+using System;
+ 
+class G1 {
+ 
+    // It is invoked before the first
+    // instance constructor is run.
+    static G1()
+    {
+ 
+        // The following statement produces
+        // the first line of output,
+        // and the line occurs only once.
+        Console.WriteLine("Example of Static Constructor");
+    }
+ 
+    // Instance constructor.
+    public G1(int j)
+    {
+        Console.WriteLine("Instance Constructor " + j);
+    }
+ 
+    // Instance method.
+    public string g1_detail(string name, string branch)
+    {
+        return "Name: " + name + " Branch: " + branch;
+    }
+ 
+    // Main Method
+    public static void Main()
+    {
+ 
+        // Here Both Static and instance
+        // constructors are invoked for
+        // first instance
+        G1 obj = new G1(1);
+ 
+        Console.WriteLine(obj.g1_detail("Sunil", "CSE"));
+ 
+        // Here only instance constructor
+        // will be invoked
+        G1 ob = new G1(2);
+ 
+        Console.WriteLine(ob.g1_detail("Sweta", "ECE"));
+    }
+}
+
+
+Example 5
+
+using System;
+  
+// Class Declaration
+public class Dog {
+  
+    // Instance Variables
+    String name;
+    String breed;
+    int age;
+    String color;
+  
+    // Constructor Declaration of Class
+    public Dog(String name, String breed,
+                  int age, String color)
+    {
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.color = color;
+    }
+  
+    // Property 1
+    public String getName()
+    {
+        return name;
+    }
+  
+    // Property 2
+    public String getBreed()
+    {
+        return breed;
+    }
+  
+    // Property 3
+    public int getAge()
+    {
+        return age;
+    }
+  
+    // Property 4
+    public String getColor()
+    {
+        return color;
+    }
+  
+    // Method 1
+    public String toString()
+    {
+        return ("Hi my name is " + this.getName()
+                + ".\nMy breed, age and color are " + this.getBreed() 
+                + ", " + this.getAge() + ", " + this.getColor());
+    }
+  
+// Main Method
+public static void Main(String[] args)
+    {
+          
+        // Creating object
+        Dog tuffy = new Dog("tuffy", "papillon", 5, "white");
+        Console.WriteLine(tuffy.toString());
+    }
+}
