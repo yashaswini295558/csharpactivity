@@ -1,1 +1,145 @@
+Example 1
 
+class Test
+{
+    delegate void TestDelegate(string s);
+    static void M(string s)
+    {
+        Console.WriteLine(s);
+    }
+
+    static void Main(string[] args)
+    {
+        // Original delegate syntax required
+        // initialization with a named method.
+        TestDelegate testDelA = new TestDelegate(M);
+
+        // C# 2.0: A delegate can be initialized with
+        // inline code, called an "anonymous method." This
+        // method takes a string as an input parameter.
+        TestDelegate testDelB = delegate(string s) { Console.WriteLine(s); };
+
+        // C# 3.0. A delegate can be initialized with
+        // a lambda expression. The lambda also takes a string
+        // as an input parameter (x). The type of x is inferred by the compiler.
+        TestDelegate testDelC = (x) => { Console.WriteLine(x); };
+
+        // Invoke the delegates.
+        testDelA("Hello. My name is M and I write lines.");
+        testDelB("That's nothing. I'm anonymous and ");
+        testDelC("I'm a famous author.");
+
+        // Keep console window open in debug mode.
+        Console.WriteLine("Press any key to exit.");
+        Console.ReadKey();
+    }
+}
+
+
+Example 2
+
+using System;
+
+public class Example
+{
+   public static void Main()
+   {
+      int value = 20;
+      Console.WriteLine("In Main, value = {0}", value);
+      ModifyValue(value);
+      Console.WriteLine("Back in Main, value = {0}", value);
+   }
+
+   static void ModifyValue(int i)
+   {
+      i = 30;
+      Console.WriteLine("In ModifyValue, parameter value = {0}", i);
+      return;
+   }
+}
+
+
+Example 3
+
+using System;
+
+public class SampleRefType
+{
+    public int value;
+}
+
+public class Example
+{
+    public static void Main()
+    {
+        var rt = new SampleRefType();
+        rt.value = 44;
+        ModifyObject(rt);
+        Console.WriteLine(rt.value);
+    }
+
+    static void ModifyObject(SampleRefType obj)
+    {
+        obj.value = 33;
+    }
+}
+
+
+Example 4
+
+using System;
+
+public class Example
+{
+   public static void Main()
+   {
+      int value = 20;
+      Console.WriteLine("In Main, value = {0}", value);
+      ModifyValue(ref value);
+      Console.WriteLine("Back in Main, value = {0}", value);
+   }
+
+   static void ModifyValue(ref int i)
+   {
+      i = 30;
+      Console.WriteLine("In ModifyValue, parameter value = {0}", i);
+      return;
+      
+   }
+   
+   
+   
+ Example 5
+ 
+ public class Example
+{
+   public static void Main()
+   {
+      var opt = new Options();
+      opt.ExampleMethod(10);
+      opt.ExampleMethod(10, 2);
+      opt.ExampleMethod(12, description: "Addition with zero:");
+   }
+}
+
+
+Example 6
+
+using System;
+
+public class Example
+{
+   static void Main(string[] args)
+   {
+      int[] values = { 2, 4, 6, 8 };
+      DoubleValues(values);
+      foreach (var value in values)
+         Console.Write("{0}  ", value);
+   }
+
+   public static void DoubleValues(int[] arr)
+   {
+      for (int ctr = 0; ctr <= arr.GetUpperBound(0); ctr++)
+         arr[ctr] = arr[ctr] * 2;
+   }
+}
