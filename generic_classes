@@ -31,3 +31,33 @@ class Program {
         Console.WriteLine("Generic int comapre result:" + integerresult);  
     }  
 }  
+
+
+
+Example 2
+
+public class Myclass<T>  
+{  
+    public void Compareme(T v1, T v2)  
+    {  
+        if (v1.Equals(v2))  
+        {  
+            Console.Write("The value is matching");  
+        }  
+        else  
+        {  
+            Console.Write("The value is not matching");  
+        }  
+    }  
+}  
+  
+class Program  
+{  
+    static void Main(string[] args)  
+    {  
+        Myclass<string> objmyint = new Myclass<string>();  
+        objmyint.Compareme("Amit","amit");  
+        Console.ReadLine();  
+  
+    }  
+}  
