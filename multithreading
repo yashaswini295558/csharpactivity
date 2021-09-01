@@ -1,1 +1,124 @@
+Example 1
 
+private string _threadOutput = "";  
+  
+/// <summary>  
+/// Thread 1: Loop continuously,  
+/// Thread 1: Displays that we are in thread 1  
+/// </summary>  
+void DisplayThread1()  
+{  
+      while (_stopThreads == false)  
+      {  
+            Console.WriteLine("Display Thread 1");  
+  
+            // Assign the shared memory to a message about thread #1  
+            _threadOutput = "Hello Thread1";  
+  
+  
+            Thread.Sleep(1000);  // simulate a lot of processing   
+  
+            // tell the user what thread we are in thread #1, and display shared memory  
+            Console.WriteLine("Thread 1 Output --> {0}", _threadOutput);  
+  
+      }  
+}  
+
+/// <summary>  
+/// Thread 2: Loop continuously,  
+/// Thread 2: Displays that we are in thread 2  
+/// </summary>  
+void DisplayThread2()  
+{  
+      while (_stopThreads == false)  
+      {  
+        Console.WriteLine("Display Thread 2");  
+  
+  
+       // Assign the shared memory to a message about thread #2  
+        _threadOutput = "Hello Thread2";  
+  
+  
+        Thread.Sleep(1000);  // simulate a lot of processing  
+  
+       // tell the user we are in thread #2  
+        Console.WriteLine("Thread 2 Output --> {0}", _threadOutput);  
+  
+      }  
+}
+Class1()  
+{  
+      // construct two threads for our demonstration;  
+      Thread thread1 = new Thread(new ThreadStart(DisplayThread1));  
+      Thread thread2 = new Thread(new ThreadStart(DisplayThread2));  
+  
+      // start them  
+      thread1.Start();  
+      thread2.Start();  
+}
+
+
+Example 2
+
+namespace Sample  
+{  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+            Console.WriteLine("Inside main");  
+  
+            //Creation of instance of Thread class  
+            Thread th = new Thread(new ThreadStart(new Program().PrintThread));  
+  
+            //Invoking Start method, here the thread will start executing  
+            th.Start();  
+            Console.ReadLine();  
+        }  
+  
+        public void PrintThread()  
+        {  
+            Console.WriteLine("In print function.");  
+            for (int i = 0; i < 10; i++)  
+            {  
+                Console.WriteLine("Print "+ i + " times.");  
+                Thread.Sleep(1000);  
+            }  
+        }  
+    }  
+}  
+
+
+
+Example 3
+
+class Program  
+{  
+    static void Main(string[] args)  
+    {  
+        Console.WriteLine("Inside main");  
+  
+        //Creation of instance of Thread class  
+        Thread th = new Thread(new ThreadStart(new Program().PrintThread));  
+  
+        //Invoking Start method, here the thread will start executing  
+        th.Start();  
+  
+        for (int i = 0; i < 10; i++)  
+        {  
+            Console.WriteLine("Print main thread" + i + " times.");  
+            Thread.Sleep(1000);  
+        }  
+        Console.ReadLine();  
+    }  
+  
+    public void PrintThread()  
+    {  
+        Console.WriteLine("In print function.");  
+        for (int i = 0; i < 10; i++)  
+        {  
+            Console.WriteLine("Print other thread"+ i + " times.");  
+            Thread.Sleep(500);  
+        }  
+    }  
+}  
